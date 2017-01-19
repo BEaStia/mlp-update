@@ -1,0 +1,63 @@
+# This is the configuration used to check the rubocop source code.
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+  TargetRubyVersion: 2.4
+
+Style/Encoding:
+  EnforcedStyle: when_needed
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+# Offense count: 86
+Metrics/AbcSize:
+  Max: 19
+
+# Offense count: 32
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Max: 178
+
+# Offense count: 28
+Metrics/CyclomaticComplexity:
+  Max: 7
+
+# Offense count: 139
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Max: 14
+
+# Offense count: 12
+# Configuration parameters: CountComments.
+Metrics/ModuleLength:
+  Max: 156
+
+Style/BarePercentLiterals:
+  EnforcedStyle: bare_percent
+  Heredoc:
+    Exclude: true
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+  Heredoc:
+    IncludeKeys:
+      - RUBY
+
+Metrics/LineLength:
+  Max: 90
+  Heredoc:
+    ExcludeKeys:
+      - YAML
+      - XML
+      - TEXT
