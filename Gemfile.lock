@@ -45,8 +45,8 @@ DEPENDENCIES
   bundler (~> 1.13)
   mlp!
   rake (~> 10.0)
-  rubocop
-  shoulda
+  rubocop (~> 0.47)
+  shoulda (~> 3.5)
 
 BUNDLED WITH
    1.13.7

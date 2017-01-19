@@ -22,13 +22,10 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/BEaStia/mlp'
   s.require_paths = ['lib']
   s.summary = 'Multi-Layer Perceptron Neural Network in Ruby'
-  # s.test_files = `git ls-files -z`.split("\x0").select do |f|
-  #   f.match(%r{^(test|spec|features)/})
-  # end
   s.required_ruby_version = '~> 2.3'
 
   s.add_development_dependency 'bundler', '~> 1.13'
   s.add_development_dependency 'rake', '~> 10.0'
-  s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'shoulda'
+  s.add_development_dependency 'rubocop', '~> 0.47'
+  s.add_development_dependency 'shoulda', '~> 3.5'
 end
