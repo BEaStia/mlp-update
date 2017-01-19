@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'mlp/version'
 
 Gem::Specification.new do |s|
-  s.name = 'mlp'
+  s.name = 'mlpnn'
   s.version = MLP::VERSION
 
   s.authors = %w(reddavis beastia)

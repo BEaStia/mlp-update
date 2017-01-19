@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mlp (0.0.1)
+    mlpnn (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -43,7 +43,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.13)
-  mlp!
+  mlpnn!
   rake (~> 10.0)
   rubocop (~> 0.47)
   shoulda (~> 3.5)
