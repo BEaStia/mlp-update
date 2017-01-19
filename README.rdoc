@@ -6,14 +6,12 @@ I also suggest checking out http://bit.ly/XEWOc for a great tutorial.
 
 == Install
 
-  gem sources -a http://gems.github.com
-  sudo gem install reddavis-mlp
+  gem install mlp
 
 == How To Use
-  require 'rubygems'
   require 'mlp'
   
-  a = MLP.new(:hidden_layers => [2], :output_nodes => 1, :inputs => 2)
+  a = MLP::Network.new(hidden_layers: [2], output_nodes: 1, inputs: 2)
 
   3001.times do |i|
     a.train([0,0], [0])
@@ -43,4 +41,4 @@ I also suggest checking out http://bit.ly/XEWOc for a great tutorial.
 
 == Copyright
 
-Copyright (c) 2009 Red Davis. See LICENSE for details.
+Copyright (c) 2009 Red Davis, 2017 Igor Pavlov See LICENSE for details.
