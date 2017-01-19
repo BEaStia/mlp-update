@@ -7,7 +7,7 @@ require 'benchmark'
 times = Benchmark.measure do
   srand 1
 
-  a = MLP.new(hidden_layers: [2], output_nodes: 1, inputs: 2)
+  a = MLP::Network.new(hidden_layers: [2], output_nodes: 1, inputs: 2)
 
   3001.times do |i|
     a.train([0, 0], [0])

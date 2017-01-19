@@ -19,7 +19,7 @@ require 'benchmark'
 times = Benchmark.measure do
   srand 1
 
-  net = MLP.new(hidden_layers: [2], output_nodes: 3, inputs: 256)
+  net = MLP::Network.new(hidden_layers: [2], output_nodes: 3, inputs: 256)
 
   tr_with_noise = TRIANGLE_WITH_NOISE.flatten.collect { |input| input.to_f / 5.0 }
   sq_with_noise = SQUARE_WITH_NOISE.flatten.collect { |input| input.to_f / 5.0 }
