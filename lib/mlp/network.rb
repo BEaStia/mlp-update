@@ -112,13 +112,54 @@ module MLP
 
       # Hidden Layers
       @hidden_layers.each_with_index do |number_of_neurons, index|
-        inputs = index == 0 ? @input_size : @hidden_layers[index - 1].size
-        @network << Array.new(number_of_neurons) { Neuron.new(inputs) }
+        inputs_count = index == 0 ? @input_size : @hidden_layers[index - 1].size
+        @network << Layer.new(
+           level: index,
+           neurons: number_of_neurons.times.map { Neuron.new(inputs_count) }
+        )
       end
 
       # Output layer
-      inputs = @hidden_layers.empty? ? @input_size : @hidden_layers.last
-      @network << Array.new(@number_of_output_nodes) { Neuron.new(inputs) }
+      inputs_count = @hidden_layers.empty? ? @input_size : @hidden_layers.last
+      @network << Layer.new(
+        level: @hidden_layers.count,
+        neurons: @number_of_output_nodes.times.map { Neuron.new(inputs_count) }
+      )
+    end
+  end
+
+  class Layer
+    attr_accessor :level, :neurons
+
+    def initialize(params)
+      @level = params[:level]
+      @neurons = params[:neurons]
+    end
+
+    def each(&block)
+      neurons.each do |n|
+        block.call(n)
+      end
+    end
+
+    def map(&block)
+      neurons.map do |n|
+        block.call(n)
+      end
+    end
+
+    def each_with_index(&block)
+      neurons.each_with_index do |n, i|
+        block.call(n, i)
+      end
+    end
+
+    def first
+      neurons.first
+    end
+
+    def last
+      neurons.last
     end
   end
 end
