@@ -21,7 +21,7 @@ class TestMLP < Minitest::Test
     a = MLP::Network.new(hidden_layers: [2], output_nodes: 2, inputs: 2)
     a.feed_forward([0, 1])
     b = a.inspect.inject([]) do |array, n|
-      array << n.map(&:last_output)
+      array << n.last_output
     end
     b.flatten!
     assert !b.include?(nil)
@@ -36,7 +36,7 @@ class TestMLP < Minitest::Test
     a = MLP::Network.new(hidden_layers: [2], output_nodes: 1, inputs: 2)
     a.train([0, 1], [0])
     b = a.inspect.inject([]) do |array, n|
-      array << n.map(&:delta)
+      array << n.delta
     end
     b.flatten!
     assert !b.include?(nil)

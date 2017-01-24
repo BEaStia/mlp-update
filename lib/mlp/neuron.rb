@@ -4,10 +4,11 @@
 module MLP
   class Neuron
     attr_reader :last_output, :weights
-    attr_accessor :delta
+    attr_accessor :delta, :id
 
-    def initialize(number_of_inputs)
+    def initialize(number_of_inputs, id)
       create_weights(number_of_inputs)
+      @id = id
     end
 
     def fire(input)
