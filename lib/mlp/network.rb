@@ -68,9 +68,8 @@ module MLP
 
     def compute_hidden_deltas(layer, _targets)
       layer.each do |neuron|
-        error = 0
-        @network.last.each do |output_neuron|
-          error += output_neuron.delta * output_neuron.weights[neuron.id]
+        error = @network.last.inject(0) do |error, output_neuron|
+          error + output_neuron.delta * output_neuron.weights[neuron.id]
         end
         output = neuron.last_output
         neuron.delta = output * (1 - output) * error
@@ -79,11 +78,9 @@ module MLP
 
     def calculate_error(targets)
       outputs = @network.last.last_output
-      sum = 0
-      targets.each_with_index do |t, index|
-        sum += (t - outputs[index])**2
+      0.5 * targets.each_with_index.inject(0) do |sum, (t, index)|
+        sum + (t - outputs[index])**2
       end
-      0.5 * sum
     end
 
     def setup_network

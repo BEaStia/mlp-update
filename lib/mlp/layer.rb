@@ -25,6 +25,12 @@ module MLP
       end
     end
 
+    def inject(val, &block)
+      neurons.inject(val) do |value, n|
+        block.call(value, n)
+      end
+    end
+
     def first
       neurons.first
     end
