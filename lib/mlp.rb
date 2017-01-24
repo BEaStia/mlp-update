@@ -2,6 +2,7 @@
 
 require 'mlp/network'
 require 'mlp/neuron'
+require 'mlp/layer'
 
 module MLP
 
