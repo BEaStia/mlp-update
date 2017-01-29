@@ -9,10 +9,10 @@ class TestMlpHard < Minitest::Test
   end
 
   def test_russian_words
-    a = MLP::Network.new(hidden_layers: [10], output_nodes: 1, inputs: 55)
+    a = MLP::Network.new(hidden_layers: [100], output_nodes: 1, inputs: 55)
     error = 1
     sexes = {f: 0, m: 1}
-    1000.times do |i|
+    5000.times do |i|
       a.train(prepare('белая'), [sexes[:f]])
       a.train(prepare('белый'), [sexes[:m]])
 

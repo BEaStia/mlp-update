@@ -3,13 +3,19 @@
 module MLP
   class Network
 
+    attr_accessor :input_size, :hidden_layers, :number_of_output_nodes, :network
+
     UPDATE_WEIGHT_VALUE = 0.25
 
     def initialize(options = {})
       @input_size = options[:inputs]
       @hidden_layers = options[:hidden_layers]
       @number_of_output_nodes = options[:output_nodes]
-      setup_network
+      if options[:network].present?
+        @network = options[:network]
+      else
+        setup_network
+      end
     end
 
     def feed_forward(input)
@@ -29,8 +35,18 @@ module MLP
       calculate_error(targets)
     end
 
-    def inspect
-      @network
+    def dump
+      JSON.dump(
+        network: network,
+        input_size: input_size,
+        hidden_layers: hidden_layers,
+        number_of_output_nodes: number_of_output_nodes
+      )
+    end
+
+    def self.load(json)
+      parsed_data = JSON.parse(json)
+      Network.new(parsed_data)
     end
 
     def update_weights(input)

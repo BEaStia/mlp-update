@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'test_helper'
+require_relative 'test_helper'
 
 class TestMLP < Minitest::Test
   should 'contain 4 layers' do
